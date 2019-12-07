@@ -37,7 +37,7 @@ public class DBconnection extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         String query = "INSERT INTO Users (ID, Username) VALUES(" + id + ",'" + name +"');";
 
-         db.execSQL(query);
+        db.execSQL(query);
         db.close();
 
 

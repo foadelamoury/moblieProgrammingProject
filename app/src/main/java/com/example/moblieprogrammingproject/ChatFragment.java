@@ -1,5 +1,6 @@
 package com.example.moblieprogrammingproject;
 
+import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,58 +11,118 @@ import android.widget.EditText;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 
 public class ChatFragment extends Fragment {
-    DBconnection db = new DBconnection(getActivity());
-    private DBconnection db2;
-    ListView listView;
-    EditText id,name;
+ListView listView;
+Button button;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+DBHelper dbHelper;
+DBconnection dBconnection;
+DatabaseConnection myDb;
+    Cursor res;
+////////////////////////
+RecyclerView recyclerView;
+    List<Item> itemList;
+    Button btnAddData;
+    EditText editName,editSurname,editMarks ,editTextId;
+    ItemAdapter itemAdapter;
 
-        return inflater.inflate(R.layout.fragment_chat, container, false);
 
 
-    }
-//    @Override
-//    public void onActivityCreated(Bundle savedInstanceState) {
-//        // TODO Auto-generated method stub
-//        super.onActivityCreated(savedInstanceState);
-//        final EditText etFirstName = (EditText) getActivity().findViewById(
-//                R.id.etFirstName);
-//        final EditText etLastName = (EditText) getActivity().findViewById(
-//                R.id.etLastName);
-//        final EditText etEmail = (EditText) getActivity().findViewById(
-//                R.id.etEmail);
-//        final EditText etUsername = (EditText) getActivity().findViewById(
-//                R.id.etUsername);
-//        final EditText etPassword = (EditText) getActivity().findViewById(
-//                R.id.etPassword);
-//        Button bDone = (Button) getActivity().findViewById(R.id.bDone);
-//        bDone.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                // TODO Auto-generated method stub
-//                MySQLiteOpenHelper db = new MySQLiteOpenHelper(null);//do I need this??
-//                db.addUser(new User(etFirstName.getText().toString(),
-//                        etLastName.getText().toString(), etEmail.getText()
-//                        .toString(), etUsername.getText().toString(),
-//                        etPassword.getText().toString()));
-//            }
-//        });
-
-//    }
+    public  static ChatFragment newInstance()
+{
+    return new ChatFragment();
 }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_chat, null);
+        myDb= new DatabaseConnection(getActivity());
+        res=myDb.getAllData();
+        itemList = new ArrayList<>();
+        StringBuffer buffer = new StringBuffer();
+        while (res.moveToNext()) {
+            buffer.append("Id :"+ res.getString(0)+"\n");
+            buffer.append("Name :"+ res.getString(1)+"\n");
+            buffer.append("Surname :"+ res.getString(2)+"\n");
+            buffer.append("Marks :"+ res.getString(3)+"\n\n");
+//            buffer.append("Date :"+ res.getString(4)+"\n\n");
+
+            itemList.add(new Item(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+
+        }
+
+        // Show all data
+//        showMessage("Data",buffer.toString());
+//        buffer.toString();
+
+
+
+        return rootView;
+    }
+    public void showMessage(String title,String Message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(Message);
+        builder.show();
+    }
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        itemAdapter = new ItemAdapter(itemList);
+
+        recyclerView = (RecyclerView)getView().findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(itemAdapter);
+        btnAddData=(Button) view.findViewById(R.id.add_data);
+        editName = (EditText) view.findViewById(R.id.editText_add_data);
+        AddData();
+
+
+        // or  (ImageView) view.findViewById(R.id.foo);
+    }
+    public  void AddData() {
+        btnAddData.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean isInserted = myDb.insertData(editName.getText().toString(),
+                                "surname",
+                                "marks" );
+                        if(isInserted == true)
+                            Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
+                        else
+                            Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+                        res=myDb.getAllData();
+
+                        while (res.moveToNext()) {
+
+                            itemList.add(new Item(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+
+                        }
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+                        recyclerView.setAdapter(itemAdapter);
+
+
+                    }
+                }
+        );
+    }
+
+}
+
+

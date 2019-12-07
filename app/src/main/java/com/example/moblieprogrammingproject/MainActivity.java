@@ -7,10 +7,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -24,12 +26,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DBconnection db = new DBconnection(this);
     ListView listView;
     EditText id,name;
+    DBHelper db2;
+    SQLiteOpenHelper sqLiteOpenHelper;
 
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        db2= new DBHelper(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -46,9 +52,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(savedInstanceState == null) {
 
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new MessageFragment()).commit();
+                    new ChatFragment()).commit();
 
-            navigationView.setCheckedItem(R.id.nav_message);
+            navigationView.setCheckedItem(R.id.nav_chat);
         }
     }
 
@@ -102,6 +108,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         listView.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,res));
 
     }
+
 }
 
 

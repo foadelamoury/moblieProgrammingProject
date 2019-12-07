@@ -1,64 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/id"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="ID"
-        android:textSize="30sp" />
+        android:layout_height="match_parent"
+        />
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="48dp"
+        android:textSize="30sp"
+        android:paddingLeft="40dp"
+        app:layout_constraintVertical_bias="0.2"
+        android:textColor="@color/cardview_shadow_end_color"
+        />
 
     <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Name"
-        android:textSize="30sp" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="save"
-            android:text="insert1"
-            android:textSize="20sp" />
-
-
-
-    </LinearLayout>
-    <LinearLayout
+        android:id="@+id/editText_add_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+      android:hint="Say something"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
+        tools:ignore="MissingConstraints"></EditText>
+<Button
+    android:id="@+id/add_data"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
 
+    app:layout_constraintStart_toEndOf="@+id/editText_add_data"
+    app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
+    android:textAllCaps="false"
+    android:text="Send"
+    tools:ignore="MissingConstraints"
+    ></Button>
 
-
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="list"
-            android:text="LIST"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-    <ListView
-        android:id="@+id/listview"
-        android:layout_width="match_parent"
-        android:layout_height="326dp" />
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
