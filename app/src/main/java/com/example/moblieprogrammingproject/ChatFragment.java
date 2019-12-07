@@ -52,19 +52,20 @@ RecyclerView recyclerView;
 
         View rootView = inflater.inflate(R.layout.fragment_chat, null);
         myDb= new DatabaseConnection(getActivity());
+
         res=myDb.getAllData();
         itemList = new ArrayList<>();
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext()) {
-            buffer.append("Id :"+ res.getString(0)+"\n");
-            buffer.append("Name :"+ res.getString(1)+"\n");
-            buffer.append("Surname :"+ res.getString(2)+"\n");
-            buffer.append("Marks :"+ res.getString(3)+"\n\n");
+            buffer.append("Id :" + res.getString(0) + "\n");
+            buffer.append("Name :" + res.getString(1) + "\n");
+            buffer.append("Surname :" + res.getString(2) + "\n");
+            buffer.append("Marks :" + res.getString(3) + "\n\n");
 //            buffer.append("Date :"+ res.getString(4)+"\n\n");
 
-            itemList.add(new Item(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
-
+            itemList.add(new Item(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
         }
+
 
         // Show all data
 //        showMessage("Data",buffer.toString());
