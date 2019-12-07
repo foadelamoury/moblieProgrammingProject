@@ -54,6 +54,7 @@ public class DatabaseConnection extends SQLiteOpenHelper {
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
         return res;
     }
+    //testing something
 
 
     public boolean updateData(String id,String name,String surname,String marks) {
