@@ -1,5 +1,6 @@
 package com.example.moblieprogrammingproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -10,11 +11,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
@@ -24,6 +27,7 @@ public class Main2Activity extends AppCompatActivity {
     Button btnviewAll;
     Button btnDelete;
     Button btnviewUpdate;
+    TextView Book;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +42,14 @@ public class Main2Activity extends AppCompatActivity {
         btnviewAll = (Button)findViewById(R.id.button_viewAll);
         btnviewUpdate= (Button)findViewById(R.id.button_update);
         btnDelete= (Button)findViewById(R.id.button_delete);
+        Book=(TextView) findViewById(R.id.textView);
         AddData();
         viewAll();
         UpdateData();
         DeleteData();
 
 
+        Book.setText(getIntent().getStringExtra("personName"));
 
 
     }
@@ -53,8 +59,15 @@ public class Main2Activity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
+                        Intent i = new Intent(Main2Activity.this, Main3Activity.class);
+
+                        String message= "Welcome "+editName.getText().toString();
+                            i.putExtra("personName", message);
+                            startActivity(i);
+
                         if(deletedRows > 0)
                             Toast.makeText(Main2Activity.this,"Data Deleted",Toast.LENGTH_LONG).show();
+
                         else
                             Toast.makeText(Main2Activity.this,"Data not Deleted",Toast.LENGTH_LONG).show();
                     }
@@ -99,7 +112,10 @@ public class Main2Activity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Cursor res = myDb.getAllData();
+                        String BookName=(String)Book.getText();
+                        Cursor res = myDb.getBookPage(BookName);
+                        Toast.makeText(Main2Activity.this,BookName,Toast.LENGTH_LONG).show();
+
                         if(res.getCount() == 0) {
                             // show message
                             showMessage("Error","Nothing found");

@@ -1,5 +1,4 @@
 package com.example.moblieprogrammingproject;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,7 +10,7 @@ import java.util.ArrayList;
 
 public class DBconnection extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "admins";
+    private static final String DATABASE_NAME = "notes_db";
     private static final int DATABASE_VERSION = 1;
 
 

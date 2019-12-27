@@ -23,7 +23,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
-    DBconnection db = new DBconnection(this);
     ListView listView;
     EditText id,name;
     DBHelper db2;
@@ -98,20 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    public void save(View view) {
 
-
-        db.insertUser(Integer.parseInt(id.getText().toString()),name.getText().toString());
-
-
-    }
-
-
-    public void list(View view) {
-        ArrayList<String> res = db.getUsers();
-        listView.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,res));
-
-    }
 
 }
 

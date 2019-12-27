@@ -29,13 +29,14 @@ ListView listView;
 Button button;
 
 DBHelper dbHelper;
-DBconnection dBconnection;
 DatabaseConnection myDb;
     Cursor res;
 ////////////////////////
 RecyclerView recyclerView;
     List<Item> itemList;
     Button btnAddData;
+    Button btnBookPage;
+
     EditText editName,editSurname,editMarks ,editTextId;
     ItemAdapter itemAdapter;
 
@@ -63,7 +64,7 @@ RecyclerView recyclerView;
             buffer.append("Marks :" + res.getString(3) + "\n\n");
 //            buffer.append("Date :"+ res.getString(4)+"\n\n");
 
-            itemList.add(new Item(res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
+            itemList.add(new Item(res.getString(0),res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
         }
 
 
@@ -88,16 +89,45 @@ RecyclerView recyclerView;
         recyclerView = (RecyclerView)getView().findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(itemAdapter);
-        btnAddData=(Button) view.findViewById(R.id.add_data);
+//        btnBookPage=(Button) view.findViewById(R.id.go_to_book_page);
+
         editName = (EditText) view.findViewById(R.id.editText_add_data);
+        btnAddData=(Button) view.findViewById(R.id.go_to_book_page);
+        Toast.makeText(getActivity(),"Testing101",Toast.LENGTH_LONG).show();
+
         AddData();
 
+//        ChooseOneBook();
 
         // or  (ImageView) view.findViewById(R.id.foo);
     }
     public  void AddData() {
-        btnAddData.setOnClickListener(
-                new View.OnClickListener() {
+        btnAddData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean  isInserted = myDb.insertData(editName.getText().toString(),
+                        "surname",
+                        "marks" );
+                if(isInserted == true)
+                    Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
+//                        else
+                Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+                res=myDb.getAllData();
+
+                while (res.moveToNext()) {
+
+                    itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+
+                }
+                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+                recyclerView.setAdapter(itemAdapter);
+
+
+            }
+        }
+        );
+        /*  btnAddData.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         boolean isInserted = myDb.insertData(editName.getText().toString(),
@@ -105,13 +135,13 @@ RecyclerView recyclerView;
                                 "marks" );
                         if(isInserted == true)
                             Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
-                        else
+//                        else
                             Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
                         res=myDb.getAllData();
 
                         while (res.moveToNext()) {
 
-                            itemList.add(new Item(res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+                            itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
 
                         }
                         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -121,8 +151,30 @@ RecyclerView recyclerView;
 
                     }
                 }
-        );
+        );  */
     }
+//    public  void ChooseOneBook() {
+//        btnBookPage.setOnClickListener(
+//                new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        Cursor result= myDb.getBookPage(res.getString(0));
+//                        Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+//
+//                        while (result.moveToNext()) {
+//
+//                            itemList.add(new Item(result.getString(0),result.getString(1),result.getString(2),result.getString(3),result.getString(4)));
+//
+//                        }
+//                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//
+//                        recyclerView.setAdapter(itemAdapter);
+//
+//
+//                    }
+//                }
+//        );
+//    }
 
 }
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ebc964"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,5 +42,17 @@
     android:text="Send"
     tools:ignore="MissingConstraints"
     ></Button>
+    <Button
+        android:id="@+id/go_to_book_page"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        app:layout_constraintStart_toEndOf="@+id/editText_add_data"
+        app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
+        android:textAllCaps="false"
+        android:text="Send"
+        tools:ignore="MissingConstraints"
+        ></Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

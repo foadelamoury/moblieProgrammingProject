@@ -38,6 +38,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
+        holder.idTextView.setText(itemList.get(position).getId());
         holder.nameTextView.setText(itemList.get(position).getName());
         holder.surnameTextView.setText(itemList.get(position).getSurname());
         holder.marksTextView.setText(itemList.get(position).getMarks());
@@ -51,6 +52,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
 
     class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView idTextView;
         TextView nameTextView;
         TextView surnameTextView;
         TextView marksTextView;
@@ -59,6 +61,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            idTextView = itemView.findViewById(R.id.book_id);
             nameTextView = itemView.findViewById(R.id.name);
             surnameTextView=itemView.findViewById(R.id.surname);
             marksTextView=itemView.findViewById(R.id.marks);

@@ -18,7 +18,7 @@ public class DatabaseConnection extends SQLiteOpenHelper {
     public static final String COL_4 = "MARKS";
     public static final String COL_5 = "TIMESTAMP";
 
-
+String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
 
     public DatabaseConnection(@Nullable Context context) {
         super(context, DATABASE_NAME, null, 1);
@@ -52,6 +52,23 @@ public class DatabaseConnection extends SQLiteOpenHelper {
     public Cursor getAllData() {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor res = db.rawQuery("select * from "+TABLE_NAME,null);
+        return res;
+    }
+
+    public Cursor getBookPage(String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String [] names={"foad",name};
+//        Cursor res = db.query(
+//                TABLE_NAME,
+//                columnNames,
+//                COL_2+"=?",
+//                names,
+//                null,
+//                null,
+//                null
+//        );
+
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" WHERE NAME='foad'", null);
         return res;
     }
     //testing something

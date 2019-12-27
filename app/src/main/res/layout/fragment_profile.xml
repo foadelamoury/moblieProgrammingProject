@@ -3,11 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_green_dark">
-    <TextView
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/profilepicture"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_profile"/>
+    <EditText
+        android:id="@+id/fullname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile Fragment"
+        android:layout_below="@id/profilepicture"
+        android:hint="Full name"
+        android:text=""
         android:textSize="30sp"
         android:layout_centerInParent="true"/>
+    <EditText
+        android:id="@+id/genres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fullname"
+        android:hint="Genres liked"
+        android:text=""
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+    <EditText
+        android:id="@+id/favbooks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/genres"
+        android:hint="Favorite books"
+        android:text=""
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+
 
 </RelativeLayout>
