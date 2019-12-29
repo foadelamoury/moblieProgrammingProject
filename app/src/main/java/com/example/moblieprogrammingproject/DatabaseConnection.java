@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -67,8 +68,10 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
 //                null,
 //                null
 //        );
+        name = "\'"+name+"\'";
+        Log.i("name",name);
 
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" WHERE NAME='foad'", null);
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" WHERE NAME = "+name, null);
         return res;
     }
     //testing something

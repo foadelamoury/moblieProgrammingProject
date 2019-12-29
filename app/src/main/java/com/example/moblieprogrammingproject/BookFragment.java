@@ -107,7 +107,7 @@ public class BookFragment extends Fragment {
 
                         editName.setError( "Name is required!" );}
                     else{
-                        String message= "Welcome "+editName.getText().toString();
+                        String message=editName.getText().toString();
                         i.putExtra("personName", message);
                         startActivity(i);
                     }
@@ -125,6 +125,8 @@ public class BookFragment extends Fragment {
                     itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
 
                 }
+
+
                 recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
                 recyclerView.setAdapter(itemAdapter);

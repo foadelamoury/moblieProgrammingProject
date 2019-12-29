@@ -61,7 +61,7 @@ public class Main2Activity extends AppCompatActivity {
                         Integer deletedRows = myDb.deleteData(editTextId.getText().toString());
                         Intent i = new Intent(Main2Activity.this, Main3Activity.class);
 
-                        String message= "Welcome "+editName.getText().toString();
+                        String message=editName.getText().toString();
                             i.putExtra("personName", message);
                             startActivity(i);
 
