@@ -44,7 +44,7 @@ public class Main2Activity extends AppCompatActivity {
         btnDelete= (Button)findViewById(R.id.button_delete);
         Book=(TextView) findViewById(R.id.textView);
         AddData();
-        viewAll();
+        viewBookPage();
         UpdateData();
         DeleteData();
 
@@ -107,7 +107,7 @@ public class Main2Activity extends AppCompatActivity {
         );
     }
 
-    public void viewAll() {
+    public void viewBookPage() {
         btnviewAll.setOnClickListener(
                 new View.OnClickListener() {
                     @Override

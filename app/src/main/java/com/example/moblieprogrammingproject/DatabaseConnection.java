@@ -14,9 +14,9 @@ public class DatabaseConnection extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "notes_db.db";
     public static final String TABLE_NAME = "notes";
     public static final String COL_1 = "ID";
-    public static final String COL_2 = "NAME";
-    public static final String COL_3 = "SURNAME";
-    public static final String COL_4 = "MARKS";
+    public static final String COL_2 = "TITLE";
+    public static final String COL_3 = "DESCRIPTION";
+    public static final String COL_4 = "AUTHOR";
     public static final String COL_5 = "TIMESTAMP";
 
 String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
@@ -27,7 +27,7 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,NAME TEXT,SURNAME TEXT,MARKS INTEGER,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR INTEGER,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
     }
 
     @Override
@@ -36,12 +36,12 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
         onCreate(db);
     }
 
-    public boolean insertData(String name,String surname,String marks) {
+    public boolean insertData(String title,String description,String author) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,name);
-        contentValues.put(COL_3,surname);
-        contentValues.put(COL_4,marks);
+        contentValues.put(COL_2,title);
+        contentValues.put(COL_3,description);
+        contentValues.put(COL_4,author);
 
         long result = db.insert(TABLE_NAME,null ,contentValues);
         if(result == -1)
@@ -56,34 +56,24 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
         return res;
     }
 
-    public Cursor getBookPage(String name) {
+    public Cursor getBookPage(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String [] names={"foad",name};
-//        Cursor res = db.query(
-//                TABLE_NAME,
-//                columnNames,
-//                COL_2+"=?",
-//                names,
-//                null,
-//                null,
-//                null
-//        );
-        name = "\'"+name+"\'";
-        Log.i("name",name);
+        title = "\'"+title+"\'";
+        Log.i("title",title);
 
-        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" WHERE NAME = "+name, null);
+        Cursor res = db.rawQuery("select * from "+TABLE_NAME +" WHERE TITLE = "+title, null);
         return res;
     }
     //testing something
 
 
-    public boolean updateData(String id,String name,String surname,String marks) {
+    public boolean updateData(String id,String title,String description,String author) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_1,id);
-        contentValues.put(COL_2,name);
-        contentValues.put(COL_3,surname);
-        contentValues.put(COL_4,marks);
+        contentValues.put(COL_2,title);
+        contentValues.put(COL_3,description);
+        contentValues.put(COL_4,author);
         db.update(TABLE_NAME, contentValues, "ID = ?",new String[] { id });
         return true;
     }
