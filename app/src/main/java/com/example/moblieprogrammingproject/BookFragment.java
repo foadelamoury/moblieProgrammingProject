@@ -84,7 +84,6 @@ public class BookFragment extends Fragment {
         editName = (EditText) view.findViewById(R.id.editText_add_data);
 
         btnBookPage=(Button) view.findViewById(R.id.go_to_book_page);
-        btnGoTo=(Button) view.findViewById(R.id.bookActivity);
         ChooseOneBook();
 
 
@@ -139,25 +138,8 @@ public class BookFragment extends Fragment {
 
 
     }
-    public  void GoToBook(){
-        btnGoTo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(),"Testing101",Toast.LENGTH_LONG).show();
 
-                Intent i = new Intent(getActivity(), Main2Activity.class);
-                if( TextUtils.isEmpty(editName.getText())){
 
-                    editName.setError( "Name is required!" );}
-                else{
-                    String message=editName.getText().toString();
-                    i.putExtra("personName", message);
-                    startActivity(i);
-                }
-            }
-        });
-
-    }
 
 }
 

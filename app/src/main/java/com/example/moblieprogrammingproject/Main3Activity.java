@@ -1,5 +1,6 @@
 package com.example.moblieprogrammingproject;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -69,4 +71,8 @@ public class Main3Activity extends AppCompatActivity {
 
 
     }
+
+
+
+
 }
