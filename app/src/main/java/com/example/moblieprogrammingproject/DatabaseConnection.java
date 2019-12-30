@@ -26,23 +26,23 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
-        String tableUsersCreate = "CREATE TABLE Users (" +
-                "ID INTEGER PRIMARY KEY," +
-                "Username VARCHAR(50) NOT NULL);" ;
-        db.execSQL(tableUsersCreate);
-        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
-                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
-        db.execSQL(tableUserBookCreate);
+//        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+//        String tableUsersCreate = "CREATE TABLE Users (" +
+//                "ID INTEGER PRIMARY KEY," +
+//                "Username VARCHAR(50) NOT NULL);" ;
+//        db.execSQL(tableUsersCreate);
+//        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
+//                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
+//        db.execSQL(tableUserBookCreate);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
-        db.execSQL("DROP TABLE IF EXISTS Users");
-        db.execSQL("DROP TABLE IF EXISTS USERBOOKS");
-
-        onCreate(db);
+//        db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+//        db.execSQL("DROP TABLE IF EXISTS Users");
+//        db.execSQL("DROP TABLE IF EXISTS USERBOOKS");
+//
+//        onCreate(db);
     }
 
     public boolean insertData2(String title,String description,String author) {

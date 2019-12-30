@@ -19,17 +19,25 @@ public class DBconnection extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-//        String tableUsersCreate = "CREATE TABLE Users (" +
-//                "ID INTEGER PRIMARY KEY," +
-//                "Username VARCHAR(50) NOT NULL);" ;
-//        sqLiteDatabase.execSQL(tableUsersCreate);
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("create table notes (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        String tableUsersCreate = "CREATE TABLE Users (" +
+                "ID INTEGER PRIMARY KEY," +
+                "Username VARCHAR(50) NOT NULL);" ;
+        db.execSQL(tableUsersCreate);
+        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
+        db.execSQL(tableUserBookCreate);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        db.execSQL("DROP TABLE IF EXISTS notes");
+        db.execSQL("DROP TABLE IF EXISTS Users");
+        db.execSQL("DROP TABLE IF EXISTS USERBOOKS");
 
+        onCreate(db);
     }
 
     public void insertUser(int id, String name) {
