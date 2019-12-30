@@ -17,8 +17,9 @@ public class Main4Activity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        Book = (TextView) findViewById(R.id.textView);
+        Book = (TextView) findViewById(R.id.favbooks);
         myDb = new DatabaseConnection(this);
+        Book.setText(getIntent().getStringExtra("bookName"));
 
         viewBookPage();
 
