@@ -92,6 +92,7 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v, int position) {
                 Intent details = new Intent(getContext(), Main2Activity.class);
+
                 details.putExtra("bookName",itemList.get(position).getName());
                 startActivity(details);
             }
@@ -116,7 +117,7 @@ public class BookFragment extends Fragment {
                     Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
 
                         else
-                Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
                 res=myDb.getAllData();
                 Intent i = new Intent(getActivity(), Main2Activity.class);
                     if( TextUtils.isEmpty(editName.getText())){
@@ -124,7 +125,10 @@ public class BookFragment extends Fragment {
                         editName.setError( "Name is required!" );}
                     else{
                         String message=editName.getText().toString();
-                        i.putExtra("personName", message);
+                        Bundle extras = new Bundle();
+                        extras.putString("personName",message);
+
+                        i.putExtras(extras);
                         startActivity(i);
                     }
 
