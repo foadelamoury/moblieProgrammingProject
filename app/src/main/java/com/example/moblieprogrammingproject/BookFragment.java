@@ -118,7 +118,7 @@ public class BookFragment extends Fragment {
 
 //                        else
 //                    Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
-                        if (res!=null){
+
                 res=myDb.getAllData();
                 Intent i = new Intent(getActivity(), Main2Activity.class);
                     if( TextUtils.isEmpty(editName.getText())){
@@ -152,7 +152,7 @@ public class BookFragment extends Fragment {
                 recyclerView.setAdapter(itemAdapter);
 
 
-            }}
+            }
                                        }
         );
 
