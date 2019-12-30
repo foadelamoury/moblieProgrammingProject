@@ -54,6 +54,8 @@ public class Main3Activity extends AppCompatActivity {
 
     public void list(View view) {
         ArrayList<String> res = db.getUsers();
+
+
         lstvew.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,res));
 
     }

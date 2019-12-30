@@ -142,7 +142,7 @@ public class BookFragment extends Fragment {
                 ((Activity) getActivity()).overridePendingTransition(0, 0);
                 while (res.moveToNext()) {
 
-                    itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
+                    itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4),res.getString(5)));
 
                 }
 

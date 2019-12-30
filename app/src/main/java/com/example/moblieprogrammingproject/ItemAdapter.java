@@ -52,6 +52,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         holder.nameTextView.setText(itemList.get(position).getName());
         holder.surnameTextView.setText(itemList.get(position).getSurname());
         holder.marksTextView.setText(itemList.get(position).getMarks());
+        holder.priceTextView.setText(itemList.get(position).getPrice());
+
         holder.timestamp.setText(formatDate(itemList.get(position).getTimestamp()));
 
 
@@ -69,6 +71,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
         TextView nameTextView;
         TextView surnameTextView;
         TextView marksTextView;
+        TextView priceTextView;
+
         TextView timestamp;
 
 
@@ -78,6 +82,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.MyViewHolder> 
             nameTextView = itemView.findViewById(R.id.name);
             surnameTextView=itemView.findViewById(R.id.surname);
             marksTextView=itemView.findViewById(R.id.marks);
+            priceTextView=itemView.findViewById(R.id.price);
+
             timestamp = itemView.findViewById(R.id.timestamp);
 
 

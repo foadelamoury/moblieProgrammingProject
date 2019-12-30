@@ -25,6 +25,7 @@
         android:textColor="@color/cardview_shadow_end_color"
         />
 
+
     <EditText
         android:id="@+id/editText_add_data"
         android:layout_width="wrap_content"

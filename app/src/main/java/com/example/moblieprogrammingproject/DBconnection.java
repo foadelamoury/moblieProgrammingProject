@@ -20,10 +20,12 @@ public class DBconnection extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table notes (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table notes (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,PRICE INTEGER DEFAULT 0,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
         String tableUsersCreate = "CREATE TABLE Users (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Username VARCHAR(50) NOT NULL);" ;
+                "Username VARCHAR(50) NOT NULL,"+
+                "WALLET INTEGER DEFAULT 0);"
+                ;
         db.execSQL(tableUsersCreate);
         String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
@@ -71,8 +73,10 @@ public class DBconnection extends SQLiteOpenHelper {
                 int id = result.getInt(0);
                 String name = result.getString(1);
 
+
                 res.add(String.valueOf(id));
                 res.add(name);
+
 
             } while (result.moveToNext());
         }

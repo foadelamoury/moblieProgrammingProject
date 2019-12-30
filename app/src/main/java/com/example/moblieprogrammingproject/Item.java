@@ -6,13 +6,17 @@ public class Item {
     private String name;
     private String surname;
     private String marks;
+    private String price;
+
     private String timestamp;
 
-    public Item(String id,String name, String surname, String marks,String timestamp) {
+    public Item(String id,String name, String surname, String marks,String price,String timestamp) {
         this.id=id;
         this.name = name;
         this.surname = surname;
         this.marks=marks;
+        this.price=price;
+
         this.timestamp= timestamp;
     }
 
@@ -27,6 +31,9 @@ public class Item {
     }
     public String getMarks() {
         return marks;
+    }
+    public String getPrice() {
+        return price;
     }
     public String getTimestamp() {
         return timestamp;
