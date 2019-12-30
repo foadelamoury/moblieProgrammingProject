@@ -91,7 +91,7 @@ public class BookFragment extends Fragment {
         recyclerView.addOnItemTouchListener(new ItemAdapter.RecyclerTouchListener(getContext(), recyclerView, new ItemAdapter.ClickListener() {
             @Override
             public void onClick(View v, int position) {
-                Intent details = new Intent(getContext(), Main2Activity.class);
+                Intent details = new Intent(getContext(), Main4Activity.class);
 
                 details.putExtra("bookName",itemList.get(position).getName());
                 startActivity(details);
