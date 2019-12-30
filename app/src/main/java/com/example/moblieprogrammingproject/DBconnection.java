@@ -22,7 +22,7 @@ public class DBconnection extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String tableUsersCreate = "CREATE TABLE Users (" +
                 "ID INTEGER PRIMARY KEY," +
-                "Username VARCHAR(50) NOT NULL,"+"BookId INTEGER);" ;
+                "Username VARCHAR(50) NOT NULL);" ;
         sqLiteDatabase.execSQL(tableUsersCreate);
     }
 

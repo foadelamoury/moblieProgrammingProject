@@ -34,15 +34,14 @@ public class BookFragment extends Fragment {
     RecyclerView recyclerView;
     List<Item> itemList;
     Button btnBookPage;
-    Button btnGoTo;
-    Button buttonTest;
+
     EditText editName,editSurname,editMarks ,editTextId;
     TextView  testView;
     ItemAdapter itemAdapter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_chat,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_book,container,false);
         myDb= new DatabaseConnection(getActivity());
 
 //        res=myDb.getAllData();
@@ -83,7 +82,6 @@ public class BookFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(itemAdapter);
-//        btnBookPage=(Button) getView().findViewById(R.id.go_to_book_page);
         editName = (EditText) view.findViewById(R.id.editText_add_data);
 
         btnBookPage=(Button) view.findViewById(R.id.add_data);
@@ -125,10 +123,8 @@ public class BookFragment extends Fragment {
                         editName.setError( "Name is required!" );}
                     else{
                         String message=editName.getText().toString();
-                        Bundle extras = new Bundle();
-                        extras.putString("personName",message);
+                        i.putExtra("personName",message);
 
-                        i.putExtras(extras);
                         startActivity(i);
                     }
 

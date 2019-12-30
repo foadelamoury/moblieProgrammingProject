@@ -24,24 +24,7 @@
         android:textColor="@color/cardview_shadow_end_color"
         />
 
-    <EditText
-        android:id="@+id/editText_add_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-      android:hint="Say something"
-        app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
-        tools:ignore="MissingConstraints"></EditText>
-<Button
-    android:id="@+id/add_data"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
 
-    app:layout_constraintStart_toEndOf="@+id/editText_add_data"
-    app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
-    android:textAllCaps="false"
-    android:text="Send"
-    tools:ignore="MissingConstraints"
-    ></Button>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

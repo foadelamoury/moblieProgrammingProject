@@ -95,63 +95,10 @@ RecyclerView recyclerView;
         btnAddData=(Button) view.findViewById(R.id.add_data);
         Toast.makeText(getActivity(),"Testing101",Toast.LENGTH_LONG).show();
 
-        AddData();
 
 //        ChooseOneBook();
 
         // or  (ImageView) view.findViewById(R.id.foo);
-    }
-    public  void AddData() {
-        btnAddData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean  isInserted = myDb.insertData(editName.getText().toString(),
-                        "surname",
-                        "marks" );
-                if(isInserted == true)
-                    Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
-//                        else
-                Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
-                res=myDb.getAllData();
-
-                while (res.moveToNext()) {
-
-                    itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
-
-                }
-                recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-                recyclerView.setAdapter(itemAdapter);
-
-
-            }
-        }
-        );
-        /*  btnAddData.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(editName.getText().toString(),
-                                "surname",
-                                "marks" );
-                        if(isInserted == true)
-                            Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
-//                        else
-                            Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
-                        res=myDb.getAllData();
-
-                        while (res.moveToNext()) {
-
-                            itemList.add(new Item(res.getString(0),res.getString(1),res.getString(2),res.getString(3),res.getString(4)));
-
-                        }
-                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-                        recyclerView.setAdapter(itemAdapter);
-
-
-                    }
-                }
-        );  */
     }
 //    public  void ChooseOneBook() {
 //        btnBookPage.setOnClickListener(

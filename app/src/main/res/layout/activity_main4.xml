@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -41,11 +44,12 @@
             android:textSize="30sp"
             android:layout_centerInParent="true"/>
 
+
     <TextView
         android:id="@+id/bookDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/favbooks"
+        android:layout_below="@+id/bookName"
         android:hint="Book Description"
 
         android:text="Book Description"
@@ -66,4 +70,56 @@
         android:textSize="30sp"
         ></TextView>
 
+
+    <Button
+        android:id="@+id/buttonAddData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bookAuthor"
+        android:layout_centerInParent="true"
+        android:onClick="addUserBookData"
+
+        android:text="Insert"
+        android:textSize="20sp" />
+    <Button
+        android:id="@+id/buttonShowData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonAddData"
+        android:layout_centerInParent="true"
+        android:onClick="viewUserBookTable"
+
+        android:text="Display"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/TheId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonShowData"
+        android:layout_centerInParent="true"
+
+        android:hint="id"
+        ></EditText>
+    <EditText
+        android:id="@+id/UserId"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TheId"
+        android:layout_centerInParent="true"
+
+        android:hint="user id"
+        ></EditText>
+    <EditText
+        android:id="@+id/BookId"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/UserId"
+        android:layout_centerInParent="true"
+
+        android:hint="book Id"
+        ></EditText>
+
 </RelativeLayout>
+</ScrollView>

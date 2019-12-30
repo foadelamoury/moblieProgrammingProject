@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -20,10 +21,10 @@ public class DBconnection2 extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tableUsersCreate = "CREATE TABLE USERBOOKS (" +
+        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "FOREIGN KEY(user_id) REFERENCES Users(_id),"+"FOREIGN KEY(book_id) REFERENCES notes(_id));" ;
-        sqLiteDatabase.execSQL(tableUsersCreate);
+                "FOREIGN KEY(user_id) REFERENCES Users(ID),"+"FOREIGN KEY(book_id) REFERENCES notes(ID));" ;
+        sqLiteDatabase.execSQL(tableUserBookCreate);
     }
 
     @Override
@@ -43,18 +44,18 @@ public class DBconnection2 extends SQLiteOpenHelper {
 //
 //    }
 
-    public boolean insertUserBookAuto(int id, int userId,int bookId) {
+    public boolean insertUserBookAuto(String id, String userId,String bookId) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("user_id", userId);
-        values.put("book_id", bookId);
+        values.put("user_id", Integer.parseInt(userId));
+        values.put("book_id", Integer.parseInt(bookId));
 
         long resultID = db.insert("USERBOOKS", null, values);
         db.close();
         return resultID > -1;
     }
 
-    public ArrayList<Integer> getUsers() {
+    public ArrayList<Integer> getUserBook() {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT * FROM USERBOOKS";
         Cursor result = db.rawQuery(query, null);
@@ -75,8 +76,15 @@ public class DBconnection2 extends SQLiteOpenHelper {
         db.close();
         return res;
     }
+    public Cursor getBookPageData(String title) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        title = "\'"+title+"\'";
 
-    public Cursor getUsers2() {
+        Cursor res = db.rawQuery("select * from notes WHERE TITLE = "+title, null);
+        return res;
+    }
+
+    public Cursor getUserBook2() {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT * FROM USERBOOKS";
         Cursor result = db.rawQuery(query, null);
@@ -85,7 +93,7 @@ public class DBconnection2 extends SQLiteOpenHelper {
         return result;
     }
 
-    public boolean updateUser(int id, String name) {
+    public boolean updateUserBook(int id, String name) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Username", name);
@@ -94,7 +102,7 @@ public class DBconnection2 extends SQLiteOpenHelper {
         return res > 0;
     }
 
-    public boolean deleteUser(int id) {
+    public boolean deleteUserBook(int id) {
         SQLiteDatabase db = getWritableDatabase();
         int res = db.delete("USERBOOKS", "ID = ?", new String[]{String.valueOf(id)});
         db.close();

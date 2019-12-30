@@ -56,6 +56,7 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
         return res;
     }
 
+
     public Cursor getBookPage(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         title = "\'"+title+"\'";
