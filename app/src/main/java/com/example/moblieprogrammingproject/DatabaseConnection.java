@@ -6,12 +6,11 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 public class DatabaseConnection extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "notes_db.db";
+    public static final String DATABASE_NAME = "notes_db";
     public static final String TABLE_NAME = "notes";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "TITLE";
@@ -27,16 +26,26 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR INTEGER,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table " + TABLE_NAME +" (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        String tableUsersCreate = "CREATE TABLE Users (" +
+                "ID INTEGER PRIMARY KEY," +
+                "Username VARCHAR(50) NOT NULL);" ;
+        db.execSQL(tableUsersCreate);
+        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
+        db.execSQL(tableUserBookCreate);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS "+TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS Users");
+        db.execSQL("DROP TABLE IF EXISTS USERBOOKS");
+
         onCreate(db);
     }
 
-    public boolean insertData(String title,String description,String author) {
+    public boolean insertData2(String title,String description,String author) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(COL_2,title);
@@ -48,6 +57,16 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
             return false;
         else
             return true;
+    }
+    public void insertData(String title, String description, String author) {
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "INSERT INTO ,'"+TABLE_NAME+"', (TITLE,DESCRIPTION,AUTHOR) VALUES(" + title + ",'" + description +"','" + author +"');";
+
+
+        db.execSQL(query);
+        db.close();
+
+
     }
 
     public Cursor getAllData() {

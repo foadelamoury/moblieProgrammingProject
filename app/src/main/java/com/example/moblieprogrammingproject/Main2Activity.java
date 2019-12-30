@@ -95,13 +95,13 @@ public class Main2Activity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertData(editName.getText().toString(),
-                                editSurname.getText().toString(),
-                                editMarks.getText().toString() );
-                        if(isInserted == true)
-                            Toast.makeText(Main2Activity.this,"Data Inserted",Toast.LENGTH_LONG).show();
-                        else
-                            Toast.makeText(Main2Activity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
+//                        boolean isInserted = myDb.insertData(editName.getText().toString(),
+//                                editSurname.getText().toString(),
+//                                editMarks.getText().toString() );
+//                        if(isInserted == true)
+//                            Toast.makeText(Main2Activity.this,"Data Inserted",Toast.LENGTH_LONG).show();
+//                        else
+//                            Toast.makeText(Main2Activity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
                     }
                 }
         );

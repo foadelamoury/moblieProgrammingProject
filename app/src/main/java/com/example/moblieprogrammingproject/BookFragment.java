@@ -108,14 +108,17 @@ public class BookFragment extends Fragment {
         btnBookPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean  isInserted = myDb.insertData(editName.getText().toString(),
-                        "It is the novel that talks about everything and nothing ",
-                        "Shakespeare" );
-                if(isInserted == true)
+                myDb.insertData(editName.getText().toString(), "It is the novel that talks about everything and nothing ", "Shakespeare");
+
+//                boolean  isInserted = myDb.insertData(editName.getText().toString(),
+//                        "It is the novel that talks about everything and nothing ",
+//                        "Shakespeare" );
+//                if(isInserted == true)
                     Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
 
-                        else
-                    Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+//                        else
+//                    Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+                        if (res!=null){
                 res=myDb.getAllData();
                 Intent i = new Intent(getActivity(), Main2Activity.class);
                     if( TextUtils.isEmpty(editName.getText())){
@@ -127,6 +130,7 @@ public class BookFragment extends Fragment {
 
                         startActivity(i);
                     }
+
 
 //            Intent mailClient = new Intent(Intent.ACTION_VIEW);
 //            mailClient.setClassName("com.google.android.gm", "com.google.android.gm.ConversationListActivity");
@@ -148,7 +152,7 @@ public class BookFragment extends Fragment {
                 recyclerView.setAdapter(itemAdapter);
 
 
-            }
+            }}
                                        }
         );
 

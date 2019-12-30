@@ -24,7 +24,6 @@ public class Main4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
 
-        editId = (EditText) findViewById(R.id.TheId);
         editUserId = (EditText) findViewById(R.id.UserId);
         editBookId = (EditText) findViewById(R.id.BookId);
 
@@ -48,8 +47,7 @@ public class Main4Activity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = myDb.insertUserBookAuto(editId.getText().toString(),
-                                editUserId.getText().toString(),
+                        boolean isInserted = myDb.insertUserBookAuto(editUserId.getText().toString(),
                                 editBookId.getText().toString());
                         if(isInserted == true)
                             Toast.makeText(Main4Activity.this,"Data Inserted",Toast.LENGTH_LONG).show();
@@ -117,11 +115,11 @@ public class Main4Activity extends AppCompatActivity {
 
     public void addUserBookData(View view)
     {
-        boolean isInserted = myDb.insertUserBookAuto(editId.getText().toString(),
-                editUserId.getText().toString(),
-                editBookId.getText().toString() );
+        boolean isInserted = myDb.insertUserBookAuto(editUserId.getText().toString(),editBookId.getText().toString() );
         if(isInserted == true)
             Toast.makeText(Main4Activity.this,"Data Inserted",Toast.LENGTH_LONG).show();
+
+
         else
             Toast.makeText(Main4Activity.this,"Data not Inserted",Toast.LENGTH_LONG).show();
     }

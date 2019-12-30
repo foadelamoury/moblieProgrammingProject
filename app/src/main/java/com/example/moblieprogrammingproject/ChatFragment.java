@@ -48,80 +48,62 @@ RecyclerView recyclerView;
 }
 
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
-        View rootView = inflater.inflate(R.layout.fragment_chat, null);
-        myDb= new DatabaseConnection(getActivity());
-
-        res=myDb.getAllData();
-        itemList = new ArrayList<>();
-        StringBuffer buffer = new StringBuffer();
-        while (res.moveToNext()) {
-            buffer.append("Id :" + res.getString(0) + "\n");
-            buffer.append("Name :" + res.getString(1) + "\n");
-            buffer.append("Surname :" + res.getString(2) + "\n");
-            buffer.append("Marks :" + res.getString(3) + "\n\n");
-//            buffer.append("Date :"+ res.getString(4)+"\n\n");
-
-            itemList.add(new Item(res.getString(0),res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
-        }
-
-
-        // Show all data
-//        showMessage("Data",buffer.toString());
-//        buffer.toString();
-
-
-
-        return rootView;
-    }
-    public void showMessage(String title,String Message){
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setCancelable(true);
-        builder.setTitle(title);
-        builder.setMessage(Message);
-        builder.show();
-    }
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        itemAdapter = new ItemAdapter(itemList,getContext());
-
-        recyclerView = (RecyclerView)getView().findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(itemAdapter);
-//        btnBookPage=(Button) view.findViewById(R.id.go_to_book_page);
-
-        editName = (EditText) view.findViewById(R.id.editText_add_data);
-        btnAddData=(Button) view.findViewById(R.id.add_data);
-        Toast.makeText(getActivity(),"Testing101",Toast.LENGTH_LONG).show();
-
-
-//        ChooseOneBook();
-
-        // or  (ImageView) view.findViewById(R.id.foo);
-    }
-//    public  void ChooseOneBook() {
-//        btnBookPage.setOnClickListener(
-//                new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        Cursor result= myDb.getBookPage(res.getString(0));
-//                        Toast.makeText(getActivity(),"Data not Inserted",Toast.LENGTH_LONG).show();
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 //
-//                        while (result.moveToNext()) {
+//        View rootView = inflater.inflate(R.layout.fragment_chat, null);
+//        myDb= new DatabaseConnection(getActivity());
 //
-//                            itemList.add(new Item(result.getString(0),result.getString(1),result.getString(2),result.getString(3),result.getString(4)));
+//        res=myDb.getAllData();
+//        itemList = new ArrayList<>();
+//        StringBuffer buffer = new StringBuffer();
+//        while (res.moveToNext()) {
+//            buffer.append("Id :" + res.getString(0) + "\n");
+//            buffer.append("Name :" + res.getString(1) + "\n");
+//            buffer.append("Surname :" + res.getString(2) + "\n");
+//            buffer.append("Marks :" + res.getString(3) + "\n\n");
+////            buffer.append("Date :"+ res.getString(4)+"\n\n");
 //
-//                        }
-//                        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//
-//                        recyclerView.setAdapter(itemAdapter);
+//            itemList.add(new Item(res.getString(0),res.getString(1), res.getString(2), res.getString(3), res.getString(4)));
+//        }
 //
 //
-//                    }
-//                }
-//        );
+//        // Show all data
+////        showMessage("Data",buffer.toString());
+////        buffer.toString();
+//
+//
+//
+//        return rootView;
 //    }
+    public void seperator2(){}
+
+    //    public void showMessage(String title,String Message){
+//        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+//        builder.setCancelable(true);
+//        builder.setTitle(title);
+//        builder.setMessage(Message);
+//        builder.show();
+//    }
+    public void seperator(){}
+//    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+//        itemAdapter = new ItemAdapter(itemList,getContext());
+//
+//        recyclerView = (RecyclerView)getView().findViewById(R.id.recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        recyclerView.setAdapter(itemAdapter);
+////        btnBookPage=(Button) view.findViewById(R.id.go_to_book_page);
+//
+//        editName = (EditText) view.findViewById(R.id.editText_add_data);
+//        btnAddData=(Button) view.findViewById(R.id.add_data);
+//        Toast.makeText(getActivity(),"Testing101",Toast.LENGTH_LONG).show();
+//
+//
+////        ChooseOneBook();
+//
+//        // or  (ImageView) view.findViewById(R.id.foo);
+//    }
+
 
 }
 

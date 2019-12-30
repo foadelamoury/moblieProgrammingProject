@@ -21,10 +21,9 @@ public class DBconnection2 extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
-                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "FOREIGN KEY(user_id) REFERENCES Users(ID),"+"FOREIGN KEY(book_id) REFERENCES notes(ID));" ;
-        sqLiteDatabase.execSQL(tableUserBookCreate);
+//        String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
+//                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
+//        sqLiteDatabase.execSQL(tableUserBookCreate);
     }
 
     @Override
@@ -44,11 +43,11 @@ public class DBconnection2 extends SQLiteOpenHelper {
 //
 //    }
 
-    public boolean insertUserBookAuto(String id, String userId,String bookId) {
+    public boolean insertUserBookAuto(String userId,String bookId) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("user_id", Integer.parseInt(userId));
-        values.put("book_id", Integer.parseInt(bookId));
+        values.put("USERID", Integer.parseInt(userId));
+        values.put("BOOKID", Integer.parseInt(bookId));
 
         long resultID = db.insert("USERBOOKS", null, values);
         db.close();

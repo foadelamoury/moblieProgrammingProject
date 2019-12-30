@@ -91,21 +91,13 @@
 
         android:text="Display"
         android:textSize="20sp" />
-    <EditText
-        android:id="@+id/TheId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/buttonShowData"
-        android:layout_centerInParent="true"
 
-        android:hint="id"
-        ></EditText>
     <EditText
         android:id="@+id/UserId"
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TheId"
+        android:layout_below="@+id/buttonShowData"
         android:layout_centerInParent="true"
 
         android:hint="user id"
