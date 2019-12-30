@@ -22,6 +22,7 @@ import java.util.ArrayList;
 public class Main3Activity extends AppCompatActivity {
     EditText id,name;
     ListView lstvew;
+    DBconnection db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +33,9 @@ public class Main3Activity extends AppCompatActivity {
         id = findViewById(R.id.id);
         name=findViewById(R.id.name);
         lstvew= findViewById(R.id.listview);
+        db = new DBconnection(this);
+
     }
-    DBconnection db = new DBconnection(this);
     public void save(View view) {
 
 
