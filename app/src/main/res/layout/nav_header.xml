@@ -12,18 +12,25 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
         android:src="@mipmap/ic_launcher_round" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
-        android:text="Person"
+        android:text="Mr. X"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is the profile section" />
+        android:textStyle="bold"
+        android:fontFamily="sans-serif"
+        android:textColor="#ffffff"
+        android:text="Mr. X's status" />
 
 </LinearLayout>

@@ -2,11 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@color/background">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Message Fragment"
+        android:text="You currently have no messages."
+        android:textAlignment="center"
+        android:fontFamily="serif"
         android:textSize="30sp"
         android:layout_centerInParent="true"/>
 
