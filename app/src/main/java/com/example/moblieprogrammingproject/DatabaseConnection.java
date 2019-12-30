@@ -10,7 +10,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 public class DatabaseConnection extends SQLiteOpenHelper {
-    public static final String DATABASE_NAME = "notes_db";
+    public static final String DATABASE_NAME = "notes_db.db";
     public static final String TABLE_NAME = "notes";
     public static final String COL_1 = "ID";
     public static final String COL_2 = "TITLE";
