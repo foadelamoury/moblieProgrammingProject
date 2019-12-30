@@ -54,26 +54,44 @@ public class DBconnection2 extends SQLiteOpenHelper {
         return resultID > -1;
     }
 
-    public ArrayList<Integer> getUserBook() {
+    public ArrayList<String> getUserBook() {
         SQLiteDatabase db = getReadableDatabase();
         String query = "SELECT * FROM USERBOOKS";
         Cursor result = db.rawQuery(query, null);
-        ArrayList<Integer> res = new ArrayList<>();
+        ArrayList<String> res = new ArrayList<>();
         if (result.moveToFirst()) {
             do {
                 int id = result.getInt(0);
                 int userId = result.getInt(1);
-                int bookId = result.getInt(1);
+                int bookId = result.getInt(2);
 
 
-                res.add(id);
-                res.add(userId);
-                res.add(bookId);
+                res.add(String.valueOf(id));
+                res.add(String.valueOf(userId));
+                res.add(String.valueOf(bookId));
 
             } while (result.moveToNext());
         }
         db.close();
         return res;
+
+
+//        SQLiteDatabase db = getReadableDatabase();
+//        String query = "SELECT * FROM Users";
+//        Cursor result = db.rawQuery(query, null);
+//        ArrayList<String> res = new ArrayList<>();
+//        if (result.moveToFirst()) {
+//            do {
+//                int id = result.getInt(0);
+//                String name = result.getString(1);
+//
+//                res.add(String.valueOf(id));
+//                res.add(name);
+//
+//            } while (result.moveToNext());
+//        }
+//        db.close();
+//        return res;
     }
     public Cursor getBookPageData(String title) {
         SQLiteDatabase db = this.getWritableDatabase();

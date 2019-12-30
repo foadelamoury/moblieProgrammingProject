@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Main4Activity extends AppCompatActivity {
     TextView Book,bookDescription,bookAuther;
@@ -18,6 +22,10 @@ public class Main4Activity extends AppCompatActivity {
 
     DatabaseConnection myDatabase;
     DBconnection2 myDb;
+
+
+    ListView lstvew;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -33,6 +41,7 @@ public class Main4Activity extends AppCompatActivity {
         bookAuther = (TextView) findViewById(R.id.bookAuthor);
         buttonAddData= (Button)findViewById(R.id.buttonAddData);
                 buttonViewData = (Button)findViewById(R.id.buttonShowData);
+        lstvew= findViewById(R.id.listview2);
 
         myDb = new DBconnection2(this);
         myDatabase=new DatabaseConnection(this);
@@ -90,23 +99,24 @@ public class Main4Activity extends AppCompatActivity {
 
 
 
-                        Cursor res = (Cursor) myDb.getUserBook();
+        ArrayList<String> res =  myDb.getUserBook();
+        lstvew.setAdapter(new ArrayAdapter<>(this,android.R.layout.simple_list_item_1,res));
 
-                        if(res.getCount() == 0) {
-                            // show message
-                            showMessage("Error","Nothing found");
-                            return;
-                        }
-
-                        StringBuffer buffer = new StringBuffer();
-                        while (res.moveToNext()) {
-                            buffer.append("Id :"+ res.getString(0)+"\n");
-                            buffer.append("userId :"+ res.getString(1)+"\n");
-                            buffer.append("bookId :"+ res.getString(2)+"\n");
-                        }
-
-                        // Show all data
-                        showMessage("Data",buffer.toString());
+//                        if(res.getCount() == 0) {
+//                            // show message
+//                            showMessage("Error","Nothing found");
+//                            return;
+//                        }
+//
+//                        StringBuffer buffer = new StringBuffer();
+//                        while (res.moveToNext()) {
+//                            buffer.append("Id :"+ res.getString(0)+"\n");
+//                            buffer.append("userId :"+ res.getString(1)+"\n");
+//                            buffer.append("bookId :"+ res.getString(2)+"\n");
+//                        }
+//
+//                        // Show all data
+//                        showMessage("Data",buffer.toString());
 
 
 

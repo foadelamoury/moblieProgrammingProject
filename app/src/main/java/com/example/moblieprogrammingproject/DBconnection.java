@@ -22,7 +22,7 @@ public class DBconnection extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table notes (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
         String tableUsersCreate = "CREATE TABLE Users (" +
-                "ID INTEGER PRIMARY KEY," +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Username VARCHAR(50) NOT NULL);" ;
         db.execSQL(tableUsersCreate);
         String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
@@ -40,9 +40,9 @@ public class DBconnection extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertUser(int id, String name) {
+    public void insertUser(String name) {
         SQLiteDatabase db = getWritableDatabase();
-        String query = "INSERT INTO Users (ID, Username) VALUES(" + id + ",'" + name +"');";
+        String query = "INSERT INTO Users (Username) VALUES('" + name +"');";
 
         db.execSQL(query);
         db.close();
@@ -51,10 +51,9 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertUserAuto(int id, String name ) {
+    public boolean insertUserAuto(String name) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("ID", id);
         values.put("Username", name);
 
         long resultID = db.insert("Users", null, values);
@@ -72,7 +71,9 @@ public class DBconnection extends SQLiteOpenHelper {
                 int id = result.getInt(0);
                 String name = result.getString(1);
 
+                res.add(String.valueOf(id));
                 res.add(name);
+
             } while (result.moveToNext());
         }
         db.close();

@@ -32,14 +32,14 @@ public class Main3Activity extends AppCompatActivity {
 
         id = findViewById(R.id.id);
         name=findViewById(R.id.name);
-        lstvew= findViewById(R.id.listview);
+            lstvew= findViewById(R.id.listview);
         db = new DBconnection(this);
 
     }
     public void save(View view) {
 
 
-        db.insertUser(Integer.parseInt(id.getText().toString()),name.getText().toString());
+        db.insertUser(name.getText().toString());
 
 
     }
@@ -62,7 +62,7 @@ public class Main3Activity extends AppCompatActivity {
 
     public void save2(View view) {
 
-        boolean res=  db.insertUserAuto(Integer.parseInt(id.getText().toString()),name.getText().toString());
+        boolean res=  db.insertUserAuto(name.getText().toString());
         if (!res)
             Toast.makeText(this,"record inserted before",Toast.LENGTH_LONG).show();
     }
