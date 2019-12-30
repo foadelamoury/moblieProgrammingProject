@@ -39,6 +39,7 @@ public class Main3Activity extends AppCompatActivity {
     public void save(View view) {
 
 
+
         db.insertUser(name.getText().toString());
 
 
