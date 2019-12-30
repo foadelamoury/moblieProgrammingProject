@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main4Activity extends AppCompatActivity {
-    TextView Book;
+    TextView Book,bookDescription,bookAuther;
     DatabaseConnection myDb;
 
     @Override
@@ -17,7 +17,10 @@ public class Main4Activity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main4);
-        Book = (TextView) findViewById(R.id.favbooks);
+        Book = (TextView) findViewById(R.id.bookName);
+        bookDescription = (TextView) findViewById(R.id.bookDescription);
+        bookAuther = (TextView) findViewById(R.id.bookAuthor);
+
         myDb = new DatabaseConnection(this);
         Book.setText(getIntent().getStringExtra("bookName"));
 
@@ -37,12 +40,16 @@ public class Main4Activity extends AppCompatActivity {
             return;
         }
 
+
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext()) {
             buffer.append("Id :"+ res.getString(0)+"\n");
             buffer.append("Name :"+ res.getString(1)+"\n");
             buffer.append("Surname :"+ res.getString(2)+"\n");
             buffer.append("Marks :"+ res.getString(3)+"\n\n");
+            bookDescription.setText(res.getString(2));
+
+            bookAuther.setText(res.getString(3));
         }
 
         // Show all data

@@ -32,23 +32,38 @@
             android:textSize="30sp"
             android:layout_centerInParent="true"/>
         <TextView
-            android:id="@+id/favbooks"
+            android:id="@+id/bookName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/genres"
-            android:hint="Book description"
-            android:text=""
+            android:hint="Book Name"
+            android:text="BookName"
             android:textSize="30sp"
             android:layout_centerInParent="true"/>
+
     <TextView
-        android:id="@+id/bookName"
+        android:id="@+id/bookDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_below="@+id/favbooks"
+        android:hint="Book Description"
 
-        android:text="Name"
-        />
+        android:text="Book Description"
 
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        ></TextView>
+    <TextView
+        android:id="@+id/bookAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bookDescription"
+        android:hint="Book Author"
+
+        android:text="Book Author"
+
+        android:layout_centerInParent="true"
+        android:textSize="30sp"
+        ></TextView>
 
 </RelativeLayout>

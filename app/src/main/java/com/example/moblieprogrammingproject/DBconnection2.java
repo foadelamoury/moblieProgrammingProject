@@ -8,21 +8,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 
 
-public class DBconnection extends SQLiteOpenHelper {
+public class DBconnection2 extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "notes_db";
     private static final int DATABASE_VERSION = 1;
 
 
-    public DBconnection(Context context) {
+    public DBconnection2(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String tableUsersCreate = "CREATE TABLE Users (" +
-                "ID INTEGER PRIMARY KEY," +
-                "Username VARCHAR(50) NOT NULL,"+"BookId INTEGER);" ;
+        String tableUsersCreate = "CREATE TABLE USERBOOKS (" +
+                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "FOREIGN KEY(user_id) REFERENCES Users(_id),"+"FOREIGN KEY(book_id) REFERENCES notes(_id));" ;
         sqLiteDatabase.execSQL(tableUsersCreate);
     }
 
@@ -32,39 +32,44 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
-    public void insertUser(int id, String name) {
-        SQLiteDatabase db = getWritableDatabase();
-        String query = "INSERT INTO Users (ID, Username) VALUES(" + id + ",'" + name +"');";
+//    public void insertUserBook(int id, String name) {
+//        SQLiteDatabase db = getWritableDatabase();
+//        String query = "INSERT INTO Users (ID, Username) VALUES(" + id + ",'" + name +"');";
+//
+//        db.execSQL(query);
+//        db.close();
+//
+//
+//
+//    }
 
-        db.execSQL(query);
-        db.close();
-
-
-
-    }
-
-    public boolean insertUserAuto(int id, String name ) {
+    public boolean insertUserBookAuto(int id, int userId,int bookId) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("ID", id);
-        values.put("Username", name);
+        values.put("user_id", userId);
+        values.put("book_id", bookId);
 
-        long resultID = db.insert("Users", null, values);
+        long resultID = db.insert("USERBOOKS", null, values);
         db.close();
         return resultID > -1;
     }
 
-    public ArrayList<String> getUsers() {
+    public ArrayList<Integer> getUsers() {
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM Users";
+        String query = "SELECT * FROM USERBOOKS";
         Cursor result = db.rawQuery(query, null);
-        ArrayList<String> res = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>();
         if (result.moveToFirst()) {
             do {
                 int id = result.getInt(0);
-                String name = result.getString(1);
+                int userId = result.getInt(1);
+                int bookId = result.getInt(1);
 
-                res.add(name);
+
+                res.add(id);
+                res.add(userId);
+                res.add(bookId);
+
             } while (result.moveToNext());
         }
         db.close();
@@ -73,7 +78,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     public Cursor getUsers2() {
         SQLiteDatabase db = getReadableDatabase();
-        String query = "SELECT * FROM Users";
+        String query = "SELECT * FROM USERBOOKS";
         Cursor result = db.rawQuery(query, null);
 
         db.close();
@@ -91,7 +96,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     public boolean deleteUser(int id) {
         SQLiteDatabase db = getWritableDatabase();
-        int res = db.delete("Users", "ID = ?", new String[]{String.valueOf(id)});
+        int res = db.delete("USERBOOKS", "ID = ?", new String[]{String.valueOf(id)});
         db.close();
         return res > 0;
     }

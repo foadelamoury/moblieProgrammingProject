@@ -111,8 +111,8 @@ public class BookFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 boolean  isInserted = myDb.insertData(editName.getText().toString(),
-                        "surname",
-                        "marks" );
+                        "It is the novel that talks about everything and nothing ",
+                        "Shakespeare" );
                 if(isInserted == true)
                     Toast.makeText(getActivity(),"Data Inserted",Toast.LENGTH_LONG).show();
 
