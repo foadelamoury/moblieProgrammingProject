@@ -45,20 +45,30 @@ String[] columnNames ={COL_1,COL_2,COL_3,COL_4};
 //        onCreate(db);
     }
 
-    public boolean insertData2(String title,String description,String author) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_2,title);
-        contentValues.put(COL_3,description);
-        contentValues.put(COL_4,author);
+    public boolean insertData(String title,String description,String author) {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+//        contentValues.put(COL_2,title);
+//        contentValues.put(COL_3,description);
+//        contentValues.put(COL_4,author);
+//
+//        long result = db.insert(TABLE_NAME,null ,contentValues);
+//        if(result == -1)
+//            return false;
+//        else
+//            return true;
 
-        long result = db.insert(TABLE_NAME,null ,contentValues);
-        if(result == -1)
-            return false;
-        else
-            return true;
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COL_2,title);
+        values.put(COL_3,description);
+        values.put(COL_4,author);
+
+        long resultID =  db.insert(TABLE_NAME,null ,values);
+        db.close();
+        return resultID > -1;
     }
-    public void insertData(String title, String description, String author) {
+    public void insertData2(String title, String description, String author) {
         SQLiteDatabase db = getWritableDatabase();
         String query = "INSERT INTO ,'"+TABLE_NAME+"', (TITLE,DESCRIPTION,AUTHOR) VALUES(" + title + ",'" + description +"','" + author +"');";
 
