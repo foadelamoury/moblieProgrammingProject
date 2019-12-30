@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_blue_dark">
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:id="@+id/profilepicture"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:src="@drawable/ic_book"/>
+    <TextView
+        android:id="@+id/fullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilepicture"
+        android:hint="Bookname"
+        android:text=""
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/genres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fullname"
+        android:hint="Genres"
+        android:text=""
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+    <TextView
+        android:id="@+id/favbooks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/genres"
+        android:hint="Book description"
+        android:text=""
+        android:textSize="30sp"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
