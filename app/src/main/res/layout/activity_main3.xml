@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -13,6 +14,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
+        android:fontFamily="serif"
         android:text="ID"
         android:textSize="30sp" />
 
@@ -23,31 +25,43 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:fontFamily="serif"
         android:textSize="30sp" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-
         <Button
+            android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="save"
-            android:text="insert1"
+            android:fontFamily="serif"
+            android:text="Insert1"
+            android:background="@drawable/button_states"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
         <Button
+            android:id="@+id/button5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="save2"
-            android:text="insert2"
+            android:fontFamily="serif"
+            android:background="@drawable/button_states"
+            android:textColor="#FFFFFF"
+            android:text="Insert2"
             android:textSize="20sp" />
 
         <Button
+            android:id="@+id/button2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="delete"
+            android:fontFamily="serif"
+            android:background="@drawable/button_states"
+            android:textColor="#FFFFFF"
             android:text="DELETE"
             android:textSize="20sp" />
     </LinearLayout>
@@ -57,17 +71,25 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/button3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="update"
+            android:background="@drawable/button_states"
+            android:textColor="#FFFFFF"
+            android:fontFamily="serif"
             android:text="UPDATE"
             android:textSize="20sp" />
 
         <Button
+            android:id="@+id/button4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="list"
+            android:fontFamily="serif"
             android:text="LIST"
+            android:background="@drawable/button_states"
+            android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
     </LinearLayout>

@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Main4Activity"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@color/background">
 
         <ImageView
             android:layout_centerHorizontal="true"
@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/profilepicture"
             android:hint="Bookname"
+            android:fontFamily="serif"
             android:text=""
             android:textSize="30sp"
             android:layout_centerInParent="true"/>
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/fullname"
             android:hint="Genres"
+            android:fontFamily="serif"
             android:text=""
             android:textSize="30sp"
             android:layout_centerInParent="true"/>
@@ -40,10 +42,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/genres"
             android:hint="Book Name"
+            android:fontFamily="serif"
             android:text="BookName"
             android:textSize="30sp"
             android:layout_centerInParent="true"/>
-
 
     <TextView
         android:id="@+id/bookDescription"
@@ -51,24 +53,23 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookName"
         android:hint="Book Description"
-
         android:text="Book Description"
-
+        android:fontFamily="serif"
         android:layout_centerInParent="true"
         android:textSize="30sp"
-        ></TextView>
+        />
+
     <TextView
         android:id="@+id/bookAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookDescription"
         android:hint="Book Author"
-
+        android:fontFamily="serif"
         android:text="Book Author"
-
         android:layout_centerInParent="true"
         android:textSize="30sp"
-        ></TextView>
+        />
 
 
     <Button
@@ -77,41 +78,45 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bookAuthor"
         android:layout_centerInParent="true"
+        android:background="@drawable/button_states"
+        android:textColor="#FFFFFF"
+        android:fontFamily="serif"
         android:onClick="addUserBookData"
-
         android:text="Insert"
         android:textSize="20sp" />
+
     <Button
         android:id="@+id/buttonShowData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonAddData"
         android:layout_centerInParent="true"
+        android:fontFamily="serif"
         android:onClick="viewUserBookTable"
-
+        android:background="@drawable/button_states"
+        android:textColor="#FFFFFF"
         android:text="Display"
         android:textSize="20sp" />
 
     <EditText
         android:id="@+id/UserId"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/buttonShowData"
         android:layout_centerInParent="true"
-
+        android:fontFamily="serif"
         android:hint="user id"
-        ></EditText>
+        />
+
     <EditText
         android:id="@+id/BookId"
-
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/UserId"
         android:layout_centerInParent="true"
-
         android:hint="book Id"
-        ></EditText>
+        android:fontFamily="serif"
+        />
 
     <ListView
         android:id="@+id/listview2"
