@@ -60,27 +60,8 @@
      app:layout_constraintTop_toBottomOf="@+id/marks"
      android:textColor="#000"
      android:textSize="@dimen/timestamp" />
-<!-- <Button-->
-<!--     android:id="@+id/go_to_book_page"-->
-<!--     android:layout_width="wrap_content"-->
-<!--     android:layout_height="wrap_content"-->
 
 
-<!--     app:layout_constraintStart_toEndOf="@+id/marks"-->
-<!--     app:layout_constraintTop_toBottomOf="@+id/marks"-->
-<!--     android:textAllCaps="false"-->
-<!--     android:text="BookPage"-->
-<!--     tools:ignore="MissingConstraints"-->
-<!--     ></Button>-->
- <Button
-  android:id="@+id/bookPage"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     app:layout_constraintStart_toEndOf="@+id/marks"
-     app:layout_constraintTop_toBottomOf="@+id/marks"
-     android:textAllCaps="false"
-     android:text="GoTo"
-     android:onClick="GoToBook"></Button>
 
  <View
      android:layout_width="match_parent"

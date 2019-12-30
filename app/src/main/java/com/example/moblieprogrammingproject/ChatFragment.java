@@ -84,7 +84,7 @@ RecyclerView recyclerView;
         builder.show();
     }
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        itemAdapter = new ItemAdapter(itemList);
+        itemAdapter = new ItemAdapter(itemList,getContext());
 
         recyclerView = (RecyclerView)getView().findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -92,7 +92,7 @@ RecyclerView recyclerView;
 //        btnBookPage=(Button) view.findViewById(R.id.go_to_book_page);
 
         editName = (EditText) view.findViewById(R.id.editText_add_data);
-        btnAddData=(Button) view.findViewById(R.id.go_to_book_page);
+        btnAddData=(Button) view.findViewById(R.id.add_data);
         Toast.makeText(getActivity(),"Testing101",Toast.LENGTH_LONG).show();
 
         AddData();

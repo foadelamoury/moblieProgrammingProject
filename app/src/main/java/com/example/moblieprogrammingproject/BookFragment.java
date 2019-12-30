@@ -42,7 +42,7 @@ public class BookFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_chat, null);
+        View rootView = inflater.inflate(R.layout.fragment_chat,container,false);
         myDb= new DatabaseConnection(getActivity());
 
 //        res=myDb.getAllData();
@@ -75,20 +75,36 @@ public class BookFragment extends Fragment {
         builder.show();
     }
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        itemAdapter = new ItemAdapter(itemList);
+
+        itemAdapter = new ItemAdapter(itemList,getContext());
 
         recyclerView = (RecyclerView)getView().findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(itemAdapter);
 //        btnBookPage=(Button) getView().findViewById(R.id.go_to_book_page);
         editName = (EditText) view.findViewById(R.id.editText_add_data);
 
-        btnBookPage=(Button) view.findViewById(R.id.go_to_book_page);
+        btnBookPage=(Button) view.findViewById(R.id.add_data);
         ChooseOneBook();
+        recyclerView.addOnItemTouchListener(new ItemAdapter.RecyclerTouchListener(getContext(), recyclerView, new ItemAdapter.ClickListener() {
+            @Override
+            public void onClick(View v, int position) {
+                Intent details = new Intent(getContext(), Main2Activity.class);
+                details.putExtra("bookName",itemList.get(position).getName());
+                startActivity(details);
+            }
 
+            @Override
+            public void onLongClick(View v, int position) {
+
+            }
+        }));
+    }
 
         // or  (ImageView) view.findViewById(R.id.foo);
-    }
+
     public  void ChooseOneBook() {
         btnBookPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +158,7 @@ public class BookFragment extends Fragment {
 
 
 }
+
 
 
 

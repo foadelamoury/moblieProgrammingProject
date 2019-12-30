@@ -49,7 +49,7 @@ public class Main2Activity extends AppCompatActivity {
         DeleteData();
 
 
-        Book.setText(getIntent().getStringExtra("personName"));
+        Book.setText(getIntent().getStringExtra("bookName"));
 
 
     }
@@ -62,7 +62,7 @@ public class Main2Activity extends AppCompatActivity {
                         Intent i = new Intent(Main2Activity.this, Main3Activity.class);
 
                         String message=editName.getText().toString();
-                            i.putExtra("personName", message);
+                            i.putExtra("bookName", message);
                             startActivity(i);
 
                         if(deletedRows > 0)
