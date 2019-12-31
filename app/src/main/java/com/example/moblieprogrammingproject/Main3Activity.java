@@ -20,26 +20,27 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Main3Activity extends AppCompatActivity {
-    EditText id,name;
+    EditText id,name,password;
     ListView lstvew;
     DBconnection db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        password=findViewById(R.id.password);
 
-        id = findViewById(R.id.id);
         name=findViewById(R.id.name);
-            lstvew= findViewById(R.id.listview);
+        lstvew= findViewById(R.id.listview);
         db = new DBconnection(this);
 
     }
     public void save(View view) {
 
 
-        db.insertUser(name.getText().toString());
+        db.insertUser(name.getText().toString(),password.getText().toString());
 
 
     }
@@ -64,7 +65,7 @@ public class Main3Activity extends AppCompatActivity {
 
     public void save2(View view) {
 
-        boolean res=  db.insertUserAuto(name.getText().toString());
+        boolean res=  db.insertUserAuto(name.getText().toString(),password.getText().toString());
         if (!res)
             Toast.makeText(this,"record inserted before",Toast.LENGTH_LONG).show();
     }
@@ -75,6 +76,12 @@ public class Main3Activity extends AppCompatActivity {
 
 
     }
+    public void goTo(View view) {
+        Intent i = new Intent(this, MainActivity.class);
+        startActivity(i);
+
+    }
+
 
 
 

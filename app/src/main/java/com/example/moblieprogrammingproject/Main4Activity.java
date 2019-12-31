@@ -40,9 +40,8 @@ public class Main4Activity extends AppCompatActivity {
         bookDescription = (TextView) findViewById(R.id.bookDescription);
         bookAuther = (TextView) findViewById(R.id.bookAuthor);
         buttonAddData= (Button)findViewById(R.id.buttonAddData);
-                buttonViewData = (Button)findViewById(R.id.buttonShowData);
+        buttonViewData = (Button)findViewById(R.id.buttonShowData);
         lstvew= findViewById(R.id.listview2);
-
         myDb = new DBconnection2(this);
         myDatabase=new DatabaseConnection(this);
         Book.setText(getIntent().getStringExtra("bookName"));

@@ -24,6 +24,7 @@ public class DBconnection extends SQLiteOpenHelper {
         String tableUsersCreate = "CREATE TABLE Users (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "Username VARCHAR(50) NOT NULL,"+
+                "Password VARCHAR(50) NOT NULL,"+
                 "WALLET INTEGER DEFAULT 0);"
                 ;
         db.execSQL(tableUsersCreate);
@@ -42,9 +43,11 @@ public class DBconnection extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertUser(String name) {
+    public void insertUser(String name,String password) {
         SQLiteDatabase db = getWritableDatabase();
-        String query = "INSERT INTO Users (Username) VALUES('" + name +"');";
+        String query = "INSERT INTO Users (Username,Password) VALUES('" + name +"','" + password +"');";
+        //        String query = "INSERT INTO Users (ID, Username) VALUES(" + id + ",'" + name +"');";
+
 
         db.execSQL(query);
         db.close();
@@ -53,7 +56,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertUserAuto(String name) {
+    public boolean insertUserAuto(String name,String password) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Username", name);

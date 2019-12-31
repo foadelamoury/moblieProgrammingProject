@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="ID"
+        android:hint="ID"
         android:textSize="30sp" />
 
     <EditText
@@ -22,8 +22,17 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:hint="Name"
         android:textSize="30sp" />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:textSize="30sp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -74,6 +83,13 @@
             android:onClick="list"
             android:text="LIST"
             android:textSize="20sp" />
+        <Button
+            android:id="@+id/button6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="goTo"
+            android:text="Go"
+            />
 
     </LinearLayout>
 
@@ -81,4 +97,6 @@
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="326dp" />
+
+
 </LinearLayout>
