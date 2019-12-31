@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ebc964"
-
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -20,6 +19,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginEnd="48dp"
         android:textSize="30sp"
+        android:fontFamily="serif"
         android:paddingLeft="40dp"
         app:layout_constraintVertical_bias="0.2"
         android:textColor="@color/cardview_shadow_end_color"
@@ -31,20 +31,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Say something"
+        android:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
-        tools:ignore="MissingConstraints"></EditText>
+        tools:ignore="MissingConstraints"/>
     <Button
         android:id="@+id/add_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         app:layout_constraintStart_toEndOf="@+id/editText_add_data"
         app:layout_constraintBottom_toBottomOf="@+id/recycler_view"
         android:textAllCaps="false"
+        android:background="@drawable/button_states"
+        android:textColor="#FFFFFF"
+        android:fontFamily="serif"
         android:text="Send"
         tools:ignore="MissingConstraints"
-
-        ></Button>
+        />
 
 
 

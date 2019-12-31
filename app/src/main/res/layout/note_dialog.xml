@@ -5,7 +5,8 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_margin"
     android:paddingRight="@dimen/activity_margin"
-    android:paddingTop="@dimen/activity_margin">
+    android:paddingTop="@dimen/activity_margin"
+    android:background="@color/background">
 
     <TextView android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
@@ -14,7 +15,7 @@
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="8sp"
         android:text="@string/lbl_new_note_title"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="@dimen/lbl_new_note_title"
         android:textStyle="normal" />
 
@@ -24,6 +25,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:gravity="top"
+        android:fontFamily="serif"
         android:hint="@string/hint_enter_note"
         android:inputType="textCapSentences|textMultiLine"
         android:lines="4"

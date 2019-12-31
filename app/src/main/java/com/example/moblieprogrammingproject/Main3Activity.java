@@ -42,6 +42,8 @@ public class Main3Activity extends AppCompatActivity {
 
         db.insertUser(name.getText().toString(),password.getText().toString());
 
+//        db.insertUser(name.getText().toString());
+
 
     }
 

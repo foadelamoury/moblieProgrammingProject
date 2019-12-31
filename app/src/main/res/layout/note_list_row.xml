@@ -8,7 +8,8 @@
     android:paddingBottom="@dimen/dimen_10"
     android:paddingLeft="@dimen/activity_margin"
     android:paddingRight="@dimen/activity_margin"
-    android:paddingTop="@dimen/dimen_10">
+    android:paddingTop="@dimen/dimen_10"
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/dot"
@@ -16,6 +17,7 @@
         android:layout_height="@dimen/dot_height"
         android:layout_marginRight="@dimen/dot_margin_right"
         android:layout_marginTop="@dimen/dimen_10"
+        android:fontFamily="serif"
         android:includeFontPadding="false"
         android:textColor="@color/colorAccent"
         android:lineSpacingExtra="0dp"
@@ -26,6 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/dot"
+        android:fontFamily="serif"
         android:textColor="@color/timestamp"
         android:textSize="@dimen/timestamp" />
 
@@ -36,6 +39,7 @@
         android:layout_below="@id/TTimestamp"
         android:layout_toRightOf="@id/dot"
         android:textColor="@color/note_list_text"
+        android:fontFamily="serif"
         android:textSize="@dimen/note_list_text"
         tools:ignore="NotSibling" />
 </RelativeLayout>
