@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity {
     DatabaseConnection myDb;
+    public static String bookID;
     EditText editName,editSurname,editMarks ,editTextId;
     Button btnAddData;
     Button btnviewAll;
@@ -124,7 +125,8 @@ public class Main2Activity extends AppCompatActivity {
 
                         StringBuffer buffer = new StringBuffer();
                         while (res.moveToNext()) {
-                            buffer.append("Id :"+ res.getString(0)+"\n");
+                            bookID=res.getString(0);
+                            buffer.append("Id :"+ bookID +"\n");
                             buffer.append("Name :"+ res.getString(1)+"\n");
                             buffer.append("Surname :"+ res.getString(2)+"\n");
                             buffer.append("Marks :"+ res.getString(3)+"\n\n");

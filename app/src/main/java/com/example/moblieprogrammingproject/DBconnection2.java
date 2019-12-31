@@ -93,6 +93,7 @@ public class DBconnection2 extends SQLiteOpenHelper {
 //        db.close();
 //        return res;
     }
+
     public Cursor getBookPageData(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         title = "\'"+title+"\'";

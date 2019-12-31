@@ -20,10 +20,13 @@ public class DBconnection extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table notes (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
+        db.execSQL("create table notes (ID INTEGER PRIMARY KEY AUTOINCREMENT,TITLE TEXT,DESCRIPTION TEXT,AUTHOR TEXT,PRICE INTEGER DEFAULT 0,TIMESTAMP DATETIME DEFAULT CURRENT_TIMESTAMP)");
         String tableUsersCreate = "CREATE TABLE Users (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-                "Username VARCHAR(50) NOT NULL);" ;
+                "Username VARCHAR(50) NOT NULL,"+
+                "Password VARCHAR(50) NOT NULL,"+
+                "WALLET INTEGER DEFAULT 0);"
+                ;
         db.execSQL(tableUsersCreate);
         String tableUserBookCreate = "CREATE TABLE USERBOOKS (" +
                 "ID INTEGER PRIMARY KEY AUTOINCREMENT," +"USERID INTEGER NOT NULL,"+"BOOKID INTEGER NOT NULL,"+"FOREIGN KEY(USERID) REFERENCES Users(ID),"+"FOREIGN KEY(BOOKID) REFERENCES notes(ID));" ;
@@ -40,9 +43,11 @@ public class DBconnection extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertUser(String name) {
+    public void insertUser(String name,String password) {
         SQLiteDatabase db = getWritableDatabase();
-        String query = "INSERT INTO Users (Username) VALUES('" + name +"');";
+        String query = "INSERT INTO Users (Username,Password) VALUES('" + name +"','" + password +"');";
+        //        String query = "INSERT INTO Users (ID, Username) VALUES(" + id + ",'" + name +"');";
+
 
         db.execSQL(query);
         db.close();
@@ -51,7 +56,7 @@ public class DBconnection extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertUserAuto(String name) {
+    public boolean insertUserAuto(String name,String password) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("Username", name);
@@ -71,8 +76,10 @@ public class DBconnection extends SQLiteOpenHelper {
                 int id = result.getInt(0);
                 String name = result.getString(1);
 
+
                 res.add(String.valueOf(id));
                 res.add(name);
+
 
             } while (result.moveToNext());
         }

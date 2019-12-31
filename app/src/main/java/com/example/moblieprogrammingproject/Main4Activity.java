@@ -154,10 +154,8 @@ public class Main4Activity extends AppCompatActivity {
 
     public void exchange(){
         myDb.insertUserBookAuto("1",bookID);
-        myDb.deleteUserBook(2);
 
         myDb.insertUserBookAuto("2","55");
-        deleteDatabase()
     }
     }
 
