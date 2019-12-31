@@ -81,8 +81,8 @@
         android:background="@drawable/button_states"
         android:textColor="#FFFFFF"
         android:fontFamily="serif"
-        android:onClick="addUserBookData"
-        android:text="Insert"
+        android:onClick="borrow"
+        android:text="Borrow"
         android:textSize="20sp" />
 
     <Button
@@ -95,7 +95,7 @@
         android:onClick="viewUserBookTable"
         android:background="@drawable/button_states"
         android:textColor="#FFFFFF"
-        android:text="Display"
+        android:text="Exchange"
         android:textSize="20sp" />
 
     <EditText

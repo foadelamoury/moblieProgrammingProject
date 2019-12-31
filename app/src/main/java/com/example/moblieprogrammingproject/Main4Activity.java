@@ -15,10 +15,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+
+
 public class Main4Activity extends AppCompatActivity {
     TextView Book,bookDescription,bookAuther;
     Button buttonAddData,buttonViewData;
     EditText editId,editUserId,editBookId;
+    String bookID;
 
     DatabaseConnection myDatabase;
     DBconnection2 myDb;
@@ -39,8 +42,8 @@ public class Main4Activity extends AppCompatActivity {
 
         bookDescription = (TextView) findViewById(R.id.bookDescription);
         bookAuther = (TextView) findViewById(R.id.bookAuthor);
-        buttonAddData= (Button)findViewById(R.id.buttonAddData);
-                buttonViewData = (Button)findViewById(R.id.buttonShowData);
+        buttonAddData = (Button)findViewById(R.id.buttonAddData);
+        buttonViewData = (Button)findViewById(R.id.buttonShowData);
         lstvew= findViewById(R.id.listview2);
 
         myDb = new DBconnection2(this);
@@ -80,7 +83,8 @@ public class Main4Activity extends AppCompatActivity {
 
         StringBuffer buffer = new StringBuffer();
         while (res.moveToNext()) {
-            buffer.append("Id :"+ res.getString(0)+"\n");
+            bookID = res.getString(0);
+            buffer.append("Id :"+ bookID+"\n");
             buffer.append("Name :"+ res.getString(1)+"\n");
             buffer.append("Surname :"+ res.getString(2)+"\n");
             buffer.append("Marks :"+ res.getString(3)+"\n\n");
@@ -141,6 +145,20 @@ public class Main4Activity extends AppCompatActivity {
             builder.setMessage(Message);
             builder.show();
         }
+
+        public void borrow(View view){
+        myDb.insertUserBookAuto("1",bookID);
+        Cursor res =  myDb.getUserBook2();
+        myDb.deleteUserBook(2);
+    }
+
+    public void exchange(){
+        myDb.insertUserBookAuto("1",bookID);
+        myDb.deleteUserBook(2);
+
+        myDb.insertUserBookAuto("2","55");
+        deleteDatabase()
+    }
     }
 
 
